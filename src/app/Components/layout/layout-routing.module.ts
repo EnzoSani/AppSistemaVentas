@@ -14,10 +14,10 @@ const routes: Routes = [{
   children:[
     {path:'dashboard', component:DashBoardComponent},
     {path:'usuarios', component:UsuarioComponent},
-    {path:'producto', component:ProductoComponent},
+    {path:'productos', component:ProductoComponent},
     {path:'venta', component:VentaComponent},
     {path:'historial_venta', component:HistorialVentaComponent},
-    {path:'reportes', component:ReporteComponent},
+    {path:'reportes', component:ReporteComponent}
     
   ]
 }];
