@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+  }
+  iniciarSesion(){
+    
     this.mostrarLoading = true;
 
     const request : Login= {
@@ -56,7 +60,6 @@ export class LoginComponent implements OnInit {
       }
 
     })
-
   }
-
+  
 }
