@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Login } from 'src/app/Interfaces/login';
 import { UsuarioService } from 'src/app/Services/usuario.service';
 import { UtilidadService } from 'src/app/Reutilizable/utilidad.service';
-import { Usuario } from 'src/app/Interfaces/usuario';
+
 
 
 @Component({
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.formularioLogin = this.fb.group({
       email:['', Validators.required],
       password:['', Validators.required]
-    })
+    });
 
   }
 
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       correo : this.formularioLogin.value.email,
       clave : this.formularioLogin.value.password
     }
+    
     this._usuarioServicio.iniciarSesion(request).subscribe({
       next: (data) =>{
        if(data.status){

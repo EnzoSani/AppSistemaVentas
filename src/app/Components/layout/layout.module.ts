@@ -9,6 +9,7 @@ import { ProductoComponent } from './Pages/producto/producto.component';
 import { VentaComponent } from './Pages/venta/venta.component';
 import { HistorialVentaComponent } from './Pages/historial-venta/historial-venta.component';
 import { ReporteComponent } from './Pages/reporte/reporte.component';
+
 import { SharedModule } from 'src/app/Reutilizable/shared/shared.module';
 import { ModalUsuarioComponent } from './Modales/modal-usuario/modal-usuario.component';
 
@@ -26,7 +27,7 @@ import { ModalUsuarioComponent } from './Modales/modal-usuario/modal-usuario.com
   imports: [
     CommonModule,
     LayoutRoutingModule,
-
+    
     SharedModule
   ]
 })
