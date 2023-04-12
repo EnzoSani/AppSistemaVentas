@@ -61,7 +61,7 @@ export class ProductoComponent implements OnInit, AfterViewInit {
     });
   }
 
-  editarUsuario(producto:Producto){
+  editarProducto(producto:Producto){
     this.dialog.open(ModalProductoComponent,{
       disableClose: true,
       data: producto
@@ -70,7 +70,7 @@ export class ProductoComponent implements OnInit, AfterViewInit {
     });
   }
 
-  eliminarUsuario(producto:Producto){
+  eliminarProducto(producto:Producto){
     Swal.fire({
       title: '¿Desea eliminar el producto?',
       text: producto.nombre,
