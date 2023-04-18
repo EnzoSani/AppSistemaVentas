@@ -14,13 +14,13 @@ import { Venta } from 'src/app/Interfaces/venta';
 import { VentaService } from 'src/app/Services/venta.service';
 import { UtilidadService } from 'src/app/Reutilizable/utilidad.service';
 
-export const MY_DATA_FORMAT={
+export const MY_DATA_FORMATS={
   parse:{
     dateInput:'DD/MM/YYYY'
   },
   display:{
     dateInput:'DD/MM/YYYY',
-    mothYearLabel:'MMMM YYYY'
+    monthYearLabel:'MMMM YYYY'
   }
 }
 
@@ -29,17 +29,17 @@ export const MY_DATA_FORMAT={
   templateUrl: './historial-venta.component.html',
   styleUrls: ['./historial-venta.component.css'],
   providers: [
-    {provide:MAT_DATE_FORMATS, useValue: MY_DATA_FORMAT}
+    {provide:MAT_DATE_FORMATS, useValue: MY_DATA_FORMATS}
   ]
 })
 export class HistorialVentaComponent implements OnInit, AfterViewInit {
 
   formularioBusqueda: FormGroup;
-  opcionesBuqueda: any[]=[
+  opcionesBusqueda: any[]=[
     {value: "fecha", descripcion:"Por fechas"},
     {value: "numero", descripcion:"Numero venta"}
-  ];
-  columnasTabla:string[]=['fechaRegistro','numeroDocumento','tipoPago','total','accion'];
+  ]
+  columnasTabla:string[]=['fechaRegistro','numeroDocumento','tipoPago','total','accion']
   dataInicio:Venta[]=[];
   datosListaVenta = new MatTableDataSource(this.dataInicio);
   @ViewChild(MatPaginator)paginacionTabla! : MatPaginator;
@@ -51,7 +51,7 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit {
     private _utilidadServicio: UtilidadService
   ) {
     this.formularioBusqueda = this.fb.group({
-      busquedaPor: ['fecha'],
+      buscarPor: ['fecha'],
       numero: [''],
       fechaInicio:[''],
       fechaFin:['']
@@ -64,6 +64,7 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit {
         fechaFin:""
       })
     })
+
    }
 
   ngOnInit(): void {
@@ -86,7 +87,7 @@ export class HistorialVentaComponent implements OnInit, AfterViewInit {
       _fechaInicio = moment(this.formularioBusqueda.value.fechaInicio).format('DD/MM/YYYY');
       _fechaFin = moment(this.formularioBusqueda.value.fechaFin).format('DD/MM/YYYY');
 
-      if( _fechaInicio === "invalidDate" || _fechaFin === "invalidDate"){
+      if( _fechaInicio === "invalid date" || _fechaFin === "invalid date"){
         this._utilidadServicio.mostrarAlerta("Debe ingresar ambas fechas","Oops")
         return;
       }
